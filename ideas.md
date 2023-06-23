@@ -1,3 +1,24 @@
+# SE
+> Explanation: https://towardsdatascience.com/squeeze-and-excitation-networks-9ef5e71eacd7
+
+## Squeeze
+
+| Parameter       | Tested Values            | Selected Value | To Try                        |
+|:--------------- |:------------------------ |:-------------- |:----------------------------- |
+| Reduction ratio | 2, 4, 8, 16, 32          | 16             |                               |
+| Operation       | max pooling, avg pooling | avg pooling    | More sophisticated techniques |
+
+## Excitation
+
+## General
+
+| Parameter     | Tested Values       | Selected Value | To Try |
+|:------------- |:------------------- |:-------------- |:------ |
+| Non linearity | ReLU, Tanh, Sigmoid | Sigmoid        |        |
+
+
+
+
 # CBAM
 
 * Channel attention
@@ -12,7 +33,9 @@
 * Arrangement - they found out best is channel → spatial
 * Merging the two modules using element-wise summation, no learnable parameters
 
-‌
+
+
+
 
 # General
 
