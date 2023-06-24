@@ -1,7 +1,8 @@
 # SE
 
 ## Explanation
-https://towardsdatascience.com/squeeze-and-excitation-networks-9ef5e71eacd7
+* https://towardsdatascience.com/squeeze-and-excitation-networks-9ef5e71eacd7
+* https://blog.paperspace.com/channel-attention-squeeze-and-excitation-networks/
 
 Diagram by ChatGPT:
 ```mermaid
