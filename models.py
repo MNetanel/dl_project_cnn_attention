@@ -1,4 +1,3 @@
-# %% [code]
 from typing import List, Optional, Type, Union
 import torch.nn as nn
 from torch import Tensor
@@ -155,7 +154,7 @@ class ResNet(nn.Module):
         
         self.inplanes = 64
         super().__init__()
-        self.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=2, padding=3, bias=False) # adjusted for CIFAR10
+        self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False) # adjusted for CIFAR10
         self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
@@ -163,7 +162,7 @@ class ResNet(nn.Module):
         self.layer2 = self._make_layer(block, 128, layers[1], stride=2, extra_modules=extra_modules_list[1], before_downsampling=before_downsampling_list[1])
         self.layer3 = self._make_layer(block, 256, layers[2], stride=2, extra_modules=extra_modules_list[2], before_downsampling=before_downsampling_list[2])
         self.layer4 = self._make_layer(block, 512, layers[3], stride=2, extra_modules=extra_modules_list[3], before_downsampling=before_downsampling_list[3])
-        self.avgpool = nn.AvgPool2d(7, 1) # Adjusted for CIFAR10
+        self.avgpool = nn.AvgPool2d(4, stride=1) # Adjusted for CIFAR10
         self.fc = nn.Linear(512 * block.expansion, num_classes)
 
         for m in self.modules():
