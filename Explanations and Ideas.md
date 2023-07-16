@@ -4,6 +4,14 @@
 * https://towardsdatascience.com/squeeze-and-excitation-networks-9ef5e71eacd7
 * https://blog.paperspace.com/channel-attention-squeeze-and-excitation-networks/
 
+$$
+\begin{align*}
+	z_c &= \mathbf{F}_\text{sq}(\mathbf{u_c})=\frac{1}{H\times W}\sum_{i=1}^H \sum_{j=1}^Wu_c^{(i, j)} \\
+	\mathbf{s} &= \mathbf{F}_\text{ex}(\mathbf{z, W}) = \sigma (\mathbf{W}_1 \delta (\mathbf{W}_2 \mathbf{z})) \\
+\end{align*} 
+$$
+$\sigma$ = sigmoid, $\delta$ = ReLU
+
 Diagram by ChatGPT:
 ```mermaid
 graph TD

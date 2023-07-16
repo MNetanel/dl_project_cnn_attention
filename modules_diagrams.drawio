@@ -1,6 +1,78 @@
-<mxfile host="Electron" modified="2023-06-24T21:23:19.371Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.0 Chrome/112.0.5615.204 Electron/24.5.1 Safari/537.36" etag="Z6rzfM_QFs9VZd1b6Iap" version="21.5.0" type="device" pages="4">
+<mxfile host="Electron" modified="2023-06-28T07:06:36.174Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36" etag="_x1rxnHQZeM7rrsUl1HL" version="21.5.1" type="device" pages="4">
+  <diagram name="SE" id="I--02y45OmGGL1tFsH7E">
+    <mxGraphModel dx="585" dy="830" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+      <root>
+        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-0" />
+        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-1" parent="PqLkNHy3JUGVFTGOb4LJ-0" />
+        <mxCell id="HGhRq8NaKp5Xdoch2C6H-0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="PqLkNHy3JUGVFTGOb4LJ-1" source="PqLkNHy3JUGVFTGOb4LJ-3" target="PqLkNHy3JUGVFTGOb4LJ-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-3" value="SE Block" style="swimlane;whiteSpace=wrap;html=1;startSize=40;fillColor=#F5F5F5;swimlaneLine=1;glass=0;gradientColor=none;swimlaneFillColor=#F5F5F5;" parent="PqLkNHy3JUGVFTGOb4LJ-1" vertex="1">
+          <mxGeometry x="319.89" y="220" width="416.25" height="520" as="geometry">
+            <mxRectangle x="500" y="240" width="140" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rpzGBniZn3CLC37RWKn5-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="PqLkNHy3JUGVFTGOb4LJ-3" source="PqLkNHy3JUGVFTGOb4LJ-16" target="rpzGBniZn3CLC37RWKn5-0" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-16" value="Squeeze -&amp;nbsp;Global Information Embedding&lt;br&gt;\(\mathbf{z} = \mathbf{F_\text{sq}}(\mathbf{u})&lt;br&gt;&amp;nbsp;\in \mathbb{R}^{C \times 1 \times 1} \)" style="swimlane;whiteSpace=wrap;html=1;startSize=40;fillColor=#F5F5F5;swimlaneLine=1;glass=0;gradientColor=none;swimlaneFillColor=#F5F5F5;" parent="PqLkNHy3JUGVFTGOb4LJ-3" vertex="1">
+          <mxGeometry x="85.75" y="70" width="244.75" height="130" as="geometry">
+            <mxRectangle x="500" y="240" width="140" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-17" value="Global average pooling&lt;br&gt;\(\mathbf{F^c_\text{avg}} \in \mathbb{R}^{C \times 1 \times 1} \)" style="rounded=0;whiteSpace=wrap;html=1;" parent="PqLkNHy3JUGVFTGOb4LJ-16" vertex="1">
+          <mxGeometry x="45.370000000000005" y="50" width="154" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rpzGBniZn3CLC37RWKn5-0" value="&lt;div&gt;Excitation - Adaptive Calibration&lt;/div&gt;&lt;div&gt;\(\mathbf{s} = \mathbf{F_\text{ex}}(\mathbf{z, W})&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&amp;nbsp;\in \mathbb{R}^{C \times 1 \times 1} \)&lt;br&gt;&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=40;fillColor=#F5F5F5;swimlaneLine=1;glass=0;gradientColor=none;swimlaneFillColor=#F5F5F5;" parent="PqLkNHy3JUGVFTGOb4LJ-3" vertex="1">
+          <mxGeometry x="85.75" y="240" width="244.75" height="240" as="geometry">
+            <mxRectangle x="500" y="240" width="140" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rpzGBniZn3CLC37RWKn5-4" value="Sigmoid" style="rounded=0;whiteSpace=wrap;html=1;" parent="rpzGBniZn3CLC37RWKn5-0" vertex="1">
+          <mxGeometry x="62.37" y="160" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rpzGBniZn3CLC37RWKn5-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="rpzGBniZn3CLC37RWKn5-0" source="PqLkNHy3JUGVFTGOb4LJ-20" target="rpzGBniZn3CLC37RWKn5-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-20" value="MLP&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;1 hidden layer, activation size \( C/r \times 1 \times 1 \)&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;\[ \mathbf{W_2 \delta (W_1 z )} \in&amp;nbsp;\mathbb{R}^{C \times 1 \times 1} \]&lt;/font&gt;&lt;/div&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="rpzGBniZn3CLC37RWKn5-0" vertex="1">
+          <mxGeometry x="45.87" y="50" width="153" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="rpzGBniZn3CLC37RWKn5-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="PqLkNHy3JUGVFTGOb4LJ-1" source="PqLkNHy3JUGVFTGOb4LJ-33" target="PqLkNHy3JUGVFTGOb4LJ-30" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="319.89" y="200" />
+              <mxPoint x="109.89" y="200" />
+              <mxPoint x="109.89" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-33" value="Input feature map&lt;br&gt;\( \mathbf{U} \in \mathbb{R} ^ {C \times H \times W} \)" style="rounded=0;whiteSpace=wrap;html=1;" parent="PqLkNHy3JUGVFTGOb4LJ-1" vertex="1">
+          <mxGeometry x="259.89" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="PqLkNHy3JUGVFTGOb4LJ-1" source="PqLkNHy3JUGVFTGOb4LJ-33" target="PqLkNHy3JUGVFTGOb4LJ-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="349.89" y="220" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="320" y="200" />
+              <mxPoint x="520" y="200" />
+            </Array>
+            <mxPoint x="499.89" y="359.9999999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-39" value="Output" style="rounded=0;whiteSpace=wrap;html=1;" parent="PqLkNHy3JUGVFTGOb4LJ-1" vertex="1">
+          <mxGeometry x="309.89" y="920" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="rpzGBniZn3CLC37RWKn5-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="PqLkNHy3JUGVFTGOb4LJ-1" source="PqLkNHy3JUGVFTGOb4LJ-30" target="PqLkNHy3JUGVFTGOb4LJ-39" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-30" value="Scale - channel-wise multiplication&lt;br&gt;\( \tilde{\mathbf{x}}_c = s_c \mathbf{u}_c \in \mathbb{R}^{H \times W} \)" style="rounded=0;whiteSpace=wrap;html=1;" parent="PqLkNHy3JUGVFTGOb4LJ-1" vertex="1">
+          <mxGeometry x="309.89" y="800" width="160" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
   <diagram name="BAM" id="zsld6Jxi-Ew4ygfTaV6O">
-    <mxGraphModel dx="1139" dy="1186" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+    <mxGraphModel dx="1064" dy="1509" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -90,10 +162,10 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="YNFKJg9VZ-PD_O8H9NEC-4" value="Batch normalization" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="NymrAEIs1yoX1wFV64J--50">
+        <mxCell id="YNFKJg9VZ-PD_O8H9NEC-4" value="Batch normalization" style="rounded=0;whiteSpace=wrap;html=1;" parent="NymrAEIs1yoX1wFV64J--50" vertex="1">
           <mxGeometry x="65" y="450" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="YNFKJg9VZ-PD_O8H9NEC-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="NymrAEIs1yoX1wFV64J--50" source="NymrAEIs1yoX1wFV64J--29" target="YNFKJg9VZ-PD_O8H9NEC-4">
+        <mxCell id="YNFKJg9VZ-PD_O8H9NEC-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="NymrAEIs1yoX1wFV64J--50" source="NymrAEIs1yoX1wFV64J--29" target="YNFKJg9VZ-PD_O8H9NEC-4" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="480" y="650" as="sourcePoint" />
             <mxPoint x="590" y="750" as="targetPoint" />
@@ -341,78 +413,6 @@
         </mxCell>
         <mxCell id="CpZOBNBuc5CGiisoCxpq-32" value="Output" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="CpZOBNBuc5CGiisoCxpq-1">
           <mxGeometry x="427.5" y="1580" width="120" height="60" as="geometry" />
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
-  <diagram name="SE" id="I--02y45OmGGL1tFsH7E">
-    <mxGraphModel dx="319" dy="332" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
-      <root>
-        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-0" />
-        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-1" parent="PqLkNHy3JUGVFTGOb4LJ-0" />
-        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-3" value="SE Block" style="swimlane;whiteSpace=wrap;html=1;startSize=40;fillColor=#F5F5F5;swimlaneLine=1;glass=0;gradientColor=none;swimlaneFillColor=#F5F5F5;" vertex="1" parent="PqLkNHy3JUGVFTGOb4LJ-1">
-          <mxGeometry x="319.89" y="220" width="416.25" height="520" as="geometry">
-            <mxRectangle x="500" y="240" width="140" height="30" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rpzGBniZn3CLC37RWKn5-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="PqLkNHy3JUGVFTGOb4LJ-3" source="PqLkNHy3JUGVFTGOb4LJ-16" target="rpzGBniZn3CLC37RWKn5-0">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-16" value="Squeeze -&amp;nbsp;Global Information Embedding&lt;br&gt;\(\mathbf{z} = \mathbf{F_\text{sq}}(\mathbf{u})&lt;br&gt;&amp;nbsp;\in \mathbb{R}^{C \times 1 \times 1} \)" style="swimlane;whiteSpace=wrap;html=1;startSize=40;fillColor=#F5F5F5;swimlaneLine=1;glass=0;gradientColor=none;swimlaneFillColor=#F5F5F5;" vertex="1" parent="PqLkNHy3JUGVFTGOb4LJ-3">
-          <mxGeometry x="85.75" y="70" width="244.75" height="130" as="geometry">
-            <mxRectangle x="500" y="240" width="140" height="30" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-17" value="Global average pooling&lt;br&gt;\(\mathbf{F^c_\text{avg}} \in \mathbb{R}^{C \times 1 \times 1} \)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="PqLkNHy3JUGVFTGOb4LJ-16">
-          <mxGeometry x="45.370000000000005" y="50" width="154" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="rpzGBniZn3CLC37RWKn5-0" value="&lt;div&gt;Excitation - Adaptive Calibration&lt;/div&gt;&lt;div&gt;\(\mathbf{s} = \mathbf{F_\text{ex}}(\mathbf{z, W})&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&amp;nbsp;\in \mathbb{R}^{C \times 1 \times 1} \)&lt;br&gt;&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=40;fillColor=#F5F5F5;swimlaneLine=1;glass=0;gradientColor=none;swimlaneFillColor=#F5F5F5;" vertex="1" parent="PqLkNHy3JUGVFTGOb4LJ-3">
-          <mxGeometry x="85.75" y="240" width="244.75" height="240" as="geometry">
-            <mxRectangle x="500" y="240" width="140" height="30" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="rpzGBniZn3CLC37RWKn5-4" value="Sigmoid" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="rpzGBniZn3CLC37RWKn5-0">
-          <mxGeometry x="62.37" y="160" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="rpzGBniZn3CLC37RWKn5-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="rpzGBniZn3CLC37RWKn5-0" source="PqLkNHy3JUGVFTGOb4LJ-20" target="rpzGBniZn3CLC37RWKn5-4">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-20" value="MLP&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;1 hidden layer, activation size \( C/r \times 1 \times 1 \)&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;\[ \mathbf{W_2 \delta (W_1 z )} \in&amp;nbsp;\mathbb{R}^{C \times 1 \times 1} \]&lt;/font&gt;&lt;/div&gt;&lt;span style=&quot;font-size: 10px;&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="rpzGBniZn3CLC37RWKn5-0">
-          <mxGeometry x="45.87" y="50" width="153" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="rpzGBniZn3CLC37RWKn5-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="PqLkNHy3JUGVFTGOb4LJ-1" source="PqLkNHy3JUGVFTGOb4LJ-33" target="PqLkNHy3JUGVFTGOb4LJ-30">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="319.89" y="200" />
-              <mxPoint x="109.89" y="200" />
-              <mxPoint x="109.89" y="840" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-33" value="Input feature map&lt;br&gt;\( \mathbf{U} \in \mathbb{R} ^ {C \times H \times W} \)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="PqLkNHy3JUGVFTGOb4LJ-1">
-          <mxGeometry x="259.89" y="120" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="PqLkNHy3JUGVFTGOb4LJ-1" source="PqLkNHy3JUGVFTGOb4LJ-33" target="PqLkNHy3JUGVFTGOb4LJ-17">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="349.89" y="220" as="sourcePoint" />
-            <Array as="points">
-              <mxPoint x="319.89" y="200" />
-              <mxPoint x="599.89" y="200" />
-            </Array>
-            <mxPoint x="499.89" y="359.9999999999999" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-39" value="Output" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="PqLkNHy3JUGVFTGOb4LJ-1">
-          <mxGeometry x="309.89" y="920" width="160" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="rpzGBniZn3CLC37RWKn5-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="PqLkNHy3JUGVFTGOb4LJ-1" source="PqLkNHy3JUGVFTGOb4LJ-30" target="PqLkNHy3JUGVFTGOb4LJ-39">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="PqLkNHy3JUGVFTGOb4LJ-30" value="Scale - channel-wise multiplication&lt;br&gt;\( \tilde{\mathbf{x}}_c = s_c \mathbf{u}_c \in \mathbb{R}^{H \times W} \)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="PqLkNHy3JUGVFTGOb4LJ-1">
-          <mxGeometry x="309.89" y="800" width="160" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="rpzGBniZn3CLC37RWKn5-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="PqLkNHy3JUGVFTGOb4LJ-1" source="rpzGBniZn3CLC37RWKn5-0" target="PqLkNHy3JUGVFTGOb4LJ-30">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -1,0 +1,11 @@
+ECA
+    basic block: [eca_layer(planes, 3)], [True]
+    bottleneck: [eca_layer(planes * 4, 3)], [True]
+
+CBAM
+    basic block: [CBAM(planes, 16)], [False]
+    bottleneck: [CBAM(planes * 4, 16)], [False]
+
+
+
+    
