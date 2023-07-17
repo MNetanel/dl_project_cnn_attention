@@ -336,7 +336,7 @@ class CBAM(nn.Module):
 # %% BAM
 class BAMChannelGate(nn.Module):
     def __init__(self, gate_channel, reduction_ratio=16, num_layers=1):
-        super(ChannelGate, self).__init__()
+        super(BAMChannelGate, self).__init__()
         self.gate_activation = gate_activation
         self.gate_c = nn.Sequential()
         self.gate_c.add_module( 'flatten', Flatten() )
@@ -354,7 +354,7 @@ class BAMChannelGate(nn.Module):
 
 class BAMSpatialGate(nn.Module):
     def __init__(self, gate_channel, reduction_ratio=16, dilation_conv_num=2, dilation_val=4):
-        super(SpatialGate, self).__init__()
+        super(BAMSpatialGate, self).__init__()
         self.gate_s = nn.Sequential()
         self.gate_s.add_module( 'gate_s_conv_reduce0', nn.Conv2d(gate_channel, gate_channel//reduction_ratio, kernel_size=1))
         self.gate_s.add_module( 'gate_s_bn_reduce0',	nn.BatchNorm2d(gate_channel//reduction_ratio) )
