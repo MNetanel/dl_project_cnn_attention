@@ -153,8 +153,9 @@ class ResNet(nn.Module):
         block: Type[Union[BasicBlock, Bottleneck]],
         layers: List[int],
         num_classes: int = 1000,
-        extra_modules_list: Optional[List[nn.Module]] = [None] * 4,
-        before_downsampling_list: Optional[List[bool]] = [None] * 4
+        extra_modules_list: Optional[List[List[nn.Module]]] = [None] * 4,
+        before_downsampling_list: Optional[List[bool]] = [None] * 4,
+        extra_modules_per_layer_list: Optional[List[List[nn.Module]]] = [None] * 4
     ) -> None:
         
         self.inplanes = 64
@@ -169,6 +170,7 @@ class ResNet(nn.Module):
         self.layer4 = self._make_layer(block, 512, layers[3], stride=2, extra_modules=extra_modules_list[3], before_downsampling=before_downsampling_list[3])
         self.avgpool = nn.AdaptiveAvgPool2d(1)
         self.fc = nn.Linear(512 * block.expansion, num_classes)
+        self.extra_modules_per_layer_list = extra_modules_per_layer_list
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
@@ -218,11 +220,19 @@ class ResNet(nn.Module):
         x = self.bn1(x)
         x = self.relu(x)
         # x = self.maxpool(x) # adjusted for CIFAR10
-
+        
         x = self.layer1(x)
+        if self.extra_modules_per_layer_list[0]:
+            x = extra_modules_per_layer_list[0](x)
         x = self.layer2(x)
+        if self.extra_modules_per_layer_list[1]:
+            x = extra_modules_per_layer_list[1](x)
         x = self.layer3(x)
+        if self.extra_modules_per_layer_list[2]:
+            x = extra_modules_per_layer_list[2](x)
         x = self.layer4(x)
+        if self.extra_modules_per_layer_list[3]:
+            x = extra_modules_per_layer_list[3](x)
 
         x = self.avgpool(x)
         x = x.view(x.size(0), -1)
