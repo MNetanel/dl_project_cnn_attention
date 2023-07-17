@@ -1,10 +1,13 @@
-from typing import List, Optional, Type, Union
 import torch.nn as nn
-from torch import Tensor
-from torch.nn.parameter import Parameter
 import torch.nn.functional as F
 import torch
 import math
+
+from typing import List, Optional, Type, Union
+from inspect import isfunction
+from torch import Tensor
+from torch.nn.parameter import Parameter
+
 
 # %% ResNet
 
