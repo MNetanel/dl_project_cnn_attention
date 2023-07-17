@@ -366,8 +366,8 @@ class BAMSpatialGate(nn.Module):
         self.gate_s.add_module( 'gate_s_bn_reduce0',	nn.BatchNorm2d(gate_channel//reduction_ratio) )
         self.gate_s.add_module( 'gate_s_relu_reduce0',nn.ReLU() )
         for i in range( dilation_conv_num ):
-            self.gate_s.add_module( 'gate_s_conv_di_%d'%i, nn.Conv2d(gate_channel//reduction_ratio, gate_channel//reduction_ratio, kernel_size=3, \
-						padding=dilation_val, dilation=dilation_val) )
+            self.gate_s.add_module( 'gate_s_conv_di_%d'%i, nn.Conv2d(gate_channel//reduction_ratio, gate_channel//reduction_ratio, kernel_size=3,
+                                                                     padding=dilation_val, dilation=dilation_val) )
             self.gate_s.add_module( 'gate_s_bn_di_%d'%i, nn.BatchNorm2d(gate_channel//reduction_ratio) )
             self.gate_s.add_module( 'gate_s_relu_di_%d'%i, nn.ReLU() )
         self.gate_s.add_module( 'gate_s_conv_final', nn.Conv2d(gate_channel//reduction_ratio, 1, kernel_size=1) )
@@ -409,3 +409,89 @@ class eca_layer(nn.Module):
         y = self.sigmoid(y)
 
         return x * y.expand_as(x)
+    
+# %% SE
+class HSigmoid(nn.Module):
+"""
+Approximated sigmoid function, so-called hard-version of sigmoid from 'Searching for MobileNetV3,'
+https://arxiv.org/abs/1905.02244.
+"""
+    def forward(self, x):
+        return F.relu6(x + 3.0, inplace=True) / 6.0
+
+def get_activation_layer(activation):
+"""
+Create activation layer from string/function.
+
+Parameters:
+----------
+activation : function, or str, or nn.Module
+    Activation function or name of activation function.
+
+Returns
+-------
+nn.Module
+    Activation layer.
+"""
+    assert (activation is not None)
+    if isfunction(activation):
+        return activation()
+    elif isinstance(activation, str):
+        if activation == "relu":
+            return nn.ReLU(inplace=True)
+        elif activation == "relu6":
+            return nn.ReLU6(inplace=True)
+        elif activation == "swish":
+            return Swish()
+        elif activation == "hswish":
+            return HSwish(inplace=True)
+        else:
+            raise NotImplementedError()
+    else:
+        assert (isinstance(activation, nn.Module))
+        return activation
+
+    
+class SEBlock(nn.Module):
+"""
+Squeeze-and-Excitation block from 'Squeeze-and-Excitation Networks,' https://arxiv.org/abs/1709.01507.
+
+Parameters:
+----------
+channels : int
+    Number of channels.
+reduction : int, default 16
+    Squeeze reduction value.
+approx_sigmoid : bool, default False
+    Whether to use approximated sigmoid function.
+activation : function, or str, or nn.Module
+    Activation function or name of activation function.
+"""
+    def __init__(self,
+                 channels,
+                 reduction=16,
+                 approx_sigmoid=False,
+                 activation=(lambda: nn.ReLU(inplace=True))):
+        super(SEBlock, self).__init__()
+        mid_cannels = channels // reduction
+
+        self.pool = nn.AdaptiveAvgPool2d(output_size=1)
+        self.conv1 = conv1x1(
+            in_channels=channels,
+            out_channels=mid_cannels,
+            bias=True)
+        self.activ = get_activation_layer(activation)
+        self.conv2 = conv1x1(
+            in_channels=mid_cannels,
+            out_channels=channels,
+            bias=True)
+        self.sigmoid = HSigmoid() if approx_sigmoid else nn.Sigmoid()
+
+    def forward(self, x):
+        w = self.pool(x)
+        w = self.conv1(w)
+        w = self.activ(w)
+        w = self.conv2(w)
+        w = self.sigmoid(w)
+        x = x * w
+        return x
