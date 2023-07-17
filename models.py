@@ -223,22 +223,22 @@ class ResNet(nn.Module):
         
         x = self.layer1(x)
         if self.extra_modules_per_layer_list[0]:
-            for module in extra_modules_per_layer_list[0]:
+            for module in self.extra_modules_per_layer_list[0]:
                 x = module(x)
                 
         x = self.layer2(x)
         if self.extra_modules_per_layer_list[1]:
-            for module in extra_modules_per_layer_list[1]:
+            for module in self.extra_modules_per_layer_list[1]:
                 x = module(x)
             
         x = self.layer3(x)
         if self.extra_modules_per_layer_list[2]:
-            for module in extra_modules_per_layer_list[2]:
+            for module in self.extra_modules_per_layer_list[2]:
                 x = module(x)
             
         x = self.layer4(x)
         if self.extra_modules_per_layer_list[3]:
-            for module in extra_modules_per_layer_list[3]:
+            for module in self.extra_modules_per_layer_list[3]:
                 x = module(x)
 
         x = self.avgpool(x)
