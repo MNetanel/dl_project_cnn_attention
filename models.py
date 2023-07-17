@@ -412,27 +412,27 @@ class eca_layer(nn.Module):
     
 # %% SE
 class HSigmoid(nn.Module):
-"""
-Approximated sigmoid function, so-called hard-version of sigmoid from 'Searching for MobileNetV3,'
-https://arxiv.org/abs/1905.02244.
-"""
+    """
+    Approximated sigmoid function, so-called hard-version of sigmoid from 'Searching for MobileNetV3,'
+    https://arxiv.org/abs/1905.02244.
+    """
     def forward(self, x):
         return F.relu6(x + 3.0, inplace=True) / 6.0
 
 def get_activation_layer(activation):
-"""
-Create activation layer from string/function.
+    """
+    Create activation layer from string/function.
 
-Parameters:
-----------
-activation : function, or str, or nn.Module
-    Activation function or name of activation function.
+    Parameters:
+    ----------
+    activation : function, or str, or nn.Module
+        Activation function or name of activation function.
 
-Returns
--------
-nn.Module
-    Activation layer.
-"""
+    Returns
+    -------
+    nn.Module
+        Activation layer.
+    """
     assert (activation is not None)
     if isfunction(activation):
         return activation()
@@ -453,20 +453,20 @@ nn.Module
 
     
 class SEBlock(nn.Module):
-"""
-Squeeze-and-Excitation block from 'Squeeze-and-Excitation Networks,' https://arxiv.org/abs/1709.01507.
+    """
+    Squeeze-and-Excitation block from 'Squeeze-and-Excitation Networks,' https://arxiv.org/abs/1709.01507.
 
-Parameters:
-----------
-channels : int
-    Number of channels.
-reduction : int, default 16
-    Squeeze reduction value.
-approx_sigmoid : bool, default False
-    Whether to use approximated sigmoid function.
-activation : function, or str, or nn.Module
-    Activation function or name of activation function.
-"""
+    Parameters:
+    ----------
+    channels : int
+        Number of channels.
+    reduction : int, default 16
+        Squeeze reduction value.
+    approx_sigmoid : bool, default False
+        Whether to use approximated sigmoid function.
+    activation : function, or str, or nn.Module
+        Activation function or name of activation function.
+    """
     def __init__(self,
                  channels,
                  reduction=16,
