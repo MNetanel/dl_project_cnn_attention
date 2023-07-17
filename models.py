@@ -20,14 +20,14 @@ def conv3x3(in_planes: int, out_planes: int, stride: int = 1) -> nn.Conv2d:
     )
 
 
-def conv1x1(in_planes: int, out_planes: int, stride: int = 1) -> nn.Conv2d:
+def conv1x1(in_planes: int, out_planes: int, stride: int = 1, bias=False) -> nn.Conv2d:
     '''1x1 convolution'''
     return nn.Conv2d(
         in_planes,
         out_planes,
         kernel_size=1,
         stride=stride,
-        bias=False
+        bias=bias
     )
 
 
