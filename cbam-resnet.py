@@ -5,6 +5,7 @@ import math
 from torch.nn import init
 from .cbam import *
 from .bam import *
+from inspect
 
 def conv3x3(in_planes, out_planes, stride=1):
     "3x3 convolution with padding"
