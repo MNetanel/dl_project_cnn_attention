@@ -477,13 +477,13 @@ class SEBlock(nn.Module):
 
         self.pool = nn.AdaptiveAvgPool2d(output_size=1)
         self.conv1 = conv1x1(
-            in_channels=channels,
-            out_channels=mid_cannels,
+            in_planes=channels,
+            out_planes=mid_cannels,
             bias=True)
         self.activ = get_activation_layer(activation)
         self.conv2 = conv1x1(
-            in_channels=mid_cannels,
-            out_channels=channels,
+            in_planes=mid_cannels,
+            out_planes=channels,
             bias=True)
         self.sigmoid = HSigmoid() if approx_sigmoid else nn.Sigmoid()
 
