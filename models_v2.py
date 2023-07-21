@@ -563,11 +563,11 @@ class CBAMCNN(nn.Module):
         super().__init__()
         self.layer1 = nn.Sequential(OrderedDict([
             ('conv1', nn.Conv2d(3, 64, 3, padding=1)),
-            ('CBAM',CBAM(64)),
+            ('att',CBAM(64)),
             ('relu1', nn.ReLU()),
             ('bn1', nn.BatchNorm2d(64)),
             ('conv2', nn.Conv2d(64, 64, 3)),
-            ('CBAM',CBAM(64)),
+            ('att',CBAM(64)),
             ('relu2', nn.ReLU()),
             ('bn2', nn.BatchNorm2d(64)),
             ('maxpool1', nn.MaxPool2d(2)),
@@ -575,11 +575,11 @@ class CBAMCNN(nn.Module):
         ]))
         self.layer2 = nn.Sequential(OrderedDict([
             ('conv1', nn.Conv2d(64, 128, 3, padding=1)),
-            ('CBAM',CBAM(128)),
+            ('att',CBAM(128)),
             ('relu1', nn.ReLU()),
             ('bn1', nn.BatchNorm2d(128)),
             ('conv2', nn.Conv2d(128, 128, 3)),
-            ('CBAM',CBAM(128)),
+            ('att',CBAM(128)),
             ('relu2', nn.ReLU()),
             ('bn2', nn.BatchNorm2d(128)),
             ('maxpool1', nn.MaxPool2d(2)),
