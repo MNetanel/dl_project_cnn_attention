@@ -493,7 +493,7 @@ class CBAMCNN(nn.Module):
         ]))
         self.layer2 = nn.Sequential(OrderedDict([
             ('conv1', nn.Conv2d(64, 128, 3, padding=1)),
-            ('CBAM',CBAM(128))
+            ('CBAM',CBAM(128)),
             ('relu1', nn.ReLU()),
             ('bn1', nn.BatchNorm2d(128)),
             ('conv2', nn.Conv2d(128, 128, 3)),
