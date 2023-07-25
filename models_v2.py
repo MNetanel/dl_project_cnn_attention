@@ -46,9 +46,8 @@ class BasicCNN(nn.Module):
         return x
 
 class Autoencoder(nn.Module):
-    def __init__(self, in_channels, out_channels, importance=1, k=3, s=2, p=1, **kwargs):
+    def __init__(self, in_channels, out_channels, k=3, s=2, p=1, **kwargs):
         super(Autoencoder, self).__init__()
-        self.importance = importance
         self.encoder = nn.Sequential(
             nn.Conv2d(in_channels, 12, 4, stride=2, padding=1),
             nn.ReLU(),
@@ -69,7 +68,7 @@ class Autoencoder(nn.Module):
     def forward(self, x):
         encoded = self.encoder(x)
         decoded = self.decoder(encoded)
-        return decoded * x * self.importance
+        return decoded * x
 
 class AutoencoderCNN(nn.Module):
     def __init__(self, importance=[1, 1]):
